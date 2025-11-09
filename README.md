@@ -2,6 +2,29 @@
 Projeto PBL do grupo: Guilherme de Oliveira Lima, Davi Medeiros Rocha e Nycolas de Lima Oliveira Silva
 
 
+# Adição de PIOs
+
+<ul>
+  <li> <b> Foram adicionados 3 PIOs (Parallel Input/Output) no Platform Designer: </b>
+       <ul>
+         <li> Instrução: 26 bits (3 bits opcode, 8 bits pixel e 15 bits endereço ou 3 bits opcode, 4 bits fator e 9 bits vazios) </li>
+         <li> Flag Enable do HPS (1 bit, informa o FPGA quando o HPS enviou a instrução propriamente) </li>
+         <li> Flag Done do FPGA (1 bit, informa o HPS para enviar a próxima instrução) </li>
+       </ul>
+  </li>
+  <p></p>
+  <p> Foram utilizados PIOs diferentes para cada item, com o objetivo de simplificar o fluxo de dados e evitar multiplexadores e decodificadores redundantes </p>
+</ul>
+
+
+# Protocolo de Comunicação
+
+![diagrama_pio](https://github.com/user-attachments/assets/94b80923-8698-45d9-89ec-341d49eb459b)
+
+O HPS aguarda o sinal de Done do FPGA, para então montar e enviar através do PIO a instrução e a flag Enable. O FPGA, ao receber o sinal Enable, decodifica a instrução e realiza o procedimento especificado, para então enviar através do PIO o sinal de Done para o HPS.
+
+Esse fluxo de informações através do PIO prevém que o FPGA decodifique a mesma instrução mais de uma vez, e impede que o HPS envie uma nova instrução até que o procedimento (execução de algoritmo ou carregamento de pixel) seja concluído.
+
 # API Assembly
 A biblioteca foi implementada usando a arquitetura ARMv7. Ela possui as seguintes funções:
 
