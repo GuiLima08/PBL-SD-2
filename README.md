@@ -25,6 +25,26 @@ O HPS aguarda o sinal de Done do FPGA, para então montar e enviar através do P
 
 Esse fluxo de informações através do PIO prevém que o FPGA decodifique a mesma instrução mais de uma vez, e impede que o HPS envie uma nova instrução até que o procedimento (execução de algoritmo ou carregamento de pixel) seja concluído.
 
+
+# ISA
+
+<ul>
+  <li> <b> As instruções utilizadas podem ser separadas em dois grupos: </b>
+       <ul>
+         <li> Tipo G: Instruções de aplicação de algoritmo (3 bits opcode, 4 bits fator de zoom e 9 bits vazios) </li>
+         <li> Tipo S: Instrução "store", que envia um pixel para ser escrito em um endereço (3 bits opcode, 8 bits pixel e 15 bits endereço) </li>
+       </ul>
+  </li>
+</ul>
+
+<img width="913" height="173" alt="Captura de tela 2025-11-09 185515" src="https://github.com/user-attachments/assets/f1058a8d-8752-4446-aa44-27026c268038" />
+
+Estrutura de instrução do tipo G.
+
+<img width="917" height="171" alt="Captura de tela 2025-11-09 185528" src="https://github.com/user-attachments/assets/9ca8ba15-b3ec-4e64-8554-d8733f16853a" />
+
+Estrutura de instrução do tipo S.
+
 # API Assembly
 A biblioteca foi implementada usando a arquitetura ARMv7. Ela possui as seguintes funções:
 
