@@ -1,0 +1,14 @@
+module instruction_decoder(
+	input [31:0] instruction,
+	output [2:0] opcode,
+	output [3:0] factor,
+	output [7:0] data,
+	output [18:0] address
+	);
+	
+	assign opcode = instruction[31:29];
+	assign factor = instruction[28:25];
+	assign data = instruction[28:21];
+	assign address = instruction[20:2];
+	
+endmodule
