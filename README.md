@@ -14,7 +14,9 @@ Para que o HPS possa enviar comandos ao coprocessador ele deve estar organizado 
 | **Sinais de saída do VGA** | --- | Saída |
 
 A Unidade de Controle (UC) foi reformulada para executar as instruções de maneira eficiente. Um decodificador foi acoplado a UC para decodificar a instrução.
+
 <img width="409" height="357" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/151b02d5-3842-46bc-9886-e56563dc34db" />
+
 | **Estado**| |
 |---|---|
 | **FETCH** | Aguarda  o sinal de flag_in. Se flag_in é ativado a instrução presente na entrada é executada. |
