@@ -6,6 +6,13 @@ De modo que viabilizasse a conexão entre o HPS e FPGA e o carregamento de image
 Uma função de escrita de um pixel na memória original foi adicionada. Essa função torna possível a escrita de uma nova imagem na memória que armazena a imagem original.
 Para que o HPS possa enviar comandos ao coprocessador ele deve estar organizado em uma estrutura para receber instruções. Sendo assim, foi necessário reformular as entradas, dedicando uma entrada para a instrução e outra para um sinal indicando que a instrução foi enviada. Um sinal de saída também foi adicionado, sinalizando que uma instrução foi executada no coporcessador. Por fim, a tabela de entradas e saídas do coprocessador ficou da seguinte forma:
 
+| **SINAL**| **TAMANHO** | **TIPO** | 
+|---|---|---|
+| **Instrução** | 26 bits | Entrada |
+| **Flag_in** | 1 bit | Entrada |
+| **Flag_out** | 1 bit | Saída |
+| **Sinais de saída do VGA** | --- | Saída |
+
 A Unidade de Controle (UC) foi reformulada para executar as instruções de maneira eficiente. Um decodificador foi acoplado a UC para decodificar a instrução.
 <img width="409" height="357" alt="Diagrama sem nome drawio" src="https://github.com/user-attachments/assets/151b02d5-3842-46bc-9886-e56563dc34db" />
 | **Estado**| |
